@@ -21,14 +21,19 @@ function handleDif(pValueA, pValueB){
     }
 }
 
+function getRandomValue(){
+    // gets random int between 0 and the length of the table
+    return Math.floor(Math.random() * elements.length);
+}
+
 // testing program
 // user chooses a value
 let userInput = prompt("Rock, paper or scissors?");
 // computer chooses a value (should be random but hardcoded for the moment)
-let computerInput = "paper";
+let computerInput = getRandomValue();
 // handle the difference between both values
-let values = handleDif(inputToValue(userInput), inputToValue(computerInput));
+let values = handleDif(inputToValue(userInput), computerInput);
 let userValue = values[0];
 let computerValue = values[1];
 // show the result in the console
-console.log(`Userinput: ${userInput} of value ${userValue} // ComputerInput: ${computerInput} of value ${computerValue}`);
+console.log(`Userinput: ${userInput} of value ${userValue} // ComputerInput: ${elements[computerInput]} of value ${computerValue}`);
