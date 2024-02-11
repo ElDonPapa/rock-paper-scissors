@@ -91,6 +91,14 @@ function playGame(pNbRounds = 5){
         console.log("\n");
     }
 
+    // Declares the winner
+    if(scores[0] > scores[1]){
+        console.log("You won the game !!!!!!");
+    } else if(scores[0] === scores[1]){
+        console.log("It's a tie...");
+    } else{
+        console.log("You lost... Better luck next time.");
+    }
 }
 
 // testing program
