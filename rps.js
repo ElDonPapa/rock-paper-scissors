@@ -26,14 +26,25 @@ function getRandomValue(){
     return Math.floor(Math.random() * elements.length);
 }
 
+function playRound(){
+    // Gather inputs
+    let userInput = prompt("Rock, paper or scissors?");
+    let computerInput = getRandomValue();
+    
+    // Handles values
+    let values = handleDif(inputToValue(userInput), computerInput);
+    let userValue = values[0];
+    let computerValue = values[1];
+
+    // Check the winner
+    if(userValue > computerValue){
+        return `You win ! ${userInput} beats ${elements[computerInput]}`
+    } else if(userValue === computerValue) {
+        return `It's a tie ! ${userInput} against ${elements[computerInput]}`
+    } else {
+        return `You lose ! ${elements[computerInput]} beats ${userInput}`
+    }
+}
+
 // testing program
-// user chooses a value
-let userInput = prompt("Rock, paper or scissors?");
-// computer chooses a value (should be random but hardcoded for the moment)
-let computerInput = getRandomValue();
-// handle the difference between both values
-let values = handleDif(inputToValue(userInput), computerInput);
-let userValue = values[0];
-let computerValue = values[1];
-// show the result in the console
-console.log(`Userinput: ${userInput} of value ${userValue} // ComputerInput: ${elements[computerInput]} of value ${computerValue}`);
+console.log(playRound());
