@@ -73,21 +73,25 @@ function playGame(pNbRounds = 5){
     // Initialize variables
     let scores = [0,0];
 
-    // Gather inputs
-    let userInput = prompt("Rock, paper or scissors?");
-    let computerInput = elements[getRandomValue()];
+    for(let round = 1; round<= pNbRounds; round++){
+        // Gather inputs
+        let userInput = prompt("Rock, paper or scissors?");
+        let computerInput = elements[getRandomValue()];
 
-    // Play round
-    let winValue = playRound(userInput, computerInput);
+        // Play round
+        let winValue = playRound(userInput, computerInput);
 
-    // Handle score
-    scores = calculateScores(scores, winValue);
+        // Handle score
+        scores = calculateScores(scores, winValue);
 
-    // Display message
-    console.log(getWinMessage(winValue, userInput, computerInput));
-    console.log(`You: ${scores[0]}, Computer: ${scores[1]}`);
+        // Display message
+        console.log(`Round: ${round}`);
+        console.log(getWinMessage(winValue, userInput, computerInput));
+        console.log(`You: ${scores[0]}, Computer: ${scores[1]}`);
+        console.log("\n");
+    }
 
 }
 
 // testing program
-playGame(1);
+playGame(5);
