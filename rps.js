@@ -1,6 +1,6 @@
 "use strict";
 
-let elements = ["rock", "paper", "scissors"];
+const elements = ["rock", "paper", "scissors"];
 
 function inputToValue(pInput){
     // Takes the input of the user and 
@@ -26,6 +26,7 @@ function getRandomValue(){
     return Math.floor(Math.random() * elements.length);
 }
 
+// Ideally this function should only return a number
 function playRound(){
     // Gather inputs
     let userInput = prompt("Rock, paper or scissors?");
@@ -44,6 +45,15 @@ function playRound(){
     } else {
         return `You lose ! ${elements[computerInput]} beats ${userInput}`
     }
+}
+
+// Create a function that takes care of the messages
+// Create a playGame() function
+function playGame(pNbRounds){
+    // Gather inputs
+    // Play round
+    // Verify who wins (playRound returns a number: 1 win, 0 tie, -1 lose)
+    // Display message
 }
 
 // testing program
