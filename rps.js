@@ -42,16 +42,16 @@ function playRound(pUserInput, pComputerInput){
     }
 }
 
-function getWinMessage(pWinValue){
+function getWinMessage(pWinValue, pUserInput, pComputerInput){
     switch(pWinValue){
         case 1:
-            return `You win !`
+            return `You win ! ${pUserInput} beats ${pComputerInput}`
             break;
         case 0:
             return `It's a tie !`
             break;
         case -1:
-            return `You lose !`
+            return `You lose ! ${pComputerInput} beats ${pUserInput}`
             break;
         default:
             return "There is a problem"
@@ -70,7 +70,7 @@ function playGame(pNbRounds = 5){
     let winValue = playRound(userInput, computerInput);
     // Verify who wins (playRound returns a number: 1 win, 0 tie, -1 lose)
     // Display message
-    console.log(getWinMessage(winValue));
+    console.log(getWinMessage(winValue, userInput, computerInput));
 }
 
 // testing program
