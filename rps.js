@@ -46,31 +46,47 @@ function getWinMessage(pWinValue, pUserInput, pComputerInput){
     switch(pWinValue){
         case 1:
             return `You win ! ${pUserInput} beats ${pComputerInput}`
-            break;
         case 0:
             return `It's a tie !`
-            break;
         case -1:
             return `You lose ! ${pComputerInput} beats ${pUserInput}`
-            break;
         default:
             return "There is a problem"
             console.error("Incorrect win value");
-            break;
     }
 }
 
-// Create a function that takes care of the messages
-// Create a playGame() function
+function calculateScores(pScores, pWinValue){
+    switch(pWinValue){
+        case 1:
+            pScores[0] += 1;
+            return pScores;
+        case 0:
+            return pScores;
+        case -1:
+            pScores[1] += 1;
+            return pScores;
+    }
+}
+
 function playGame(pNbRounds = 5){
+    // Initialize variables
+    let scores = [0,0];
+
     // Gather inputs
     let userInput = prompt("Rock, paper or scissors?");
     let computerInput = elements[getRandomValue()];
+
     // Play round
     let winValue = playRound(userInput, computerInput);
-    // Verify who wins (playRound returns a number: 1 win, 0 tie, -1 lose)
+
+    // Handle score
+    scores = calculateScores(scores, winValue);
+
     // Display message
     console.log(getWinMessage(winValue, userInput, computerInput));
+    console.log(`You: ${scores[0]}, Computer: ${scores[1]}`);
+
 }
 
 // testing program
