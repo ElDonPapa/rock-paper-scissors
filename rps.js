@@ -26,35 +26,52 @@ function getRandomValue(){
     return Math.floor(Math.random() * elements.length);
 }
 
-// Ideally this function should only return a number
-function playRound(){
-    // Gather inputs
-    let userInput = prompt("Rock, paper or scissors?");
-    let computerInput = getRandomValue();
-    
+function playRound(pUserInput, pComputerInput){
     // Handles values
-    let values = handleDif(inputToValue(userInput), computerInput);
+    let values = handleDif(inputToValue(pUserInput), inputToValue(pComputerInput));
     let userValue = values[0];
     let computerValue = values[1];
 
     // Check the winner
     if(userValue > computerValue){
-        return `You win ! ${userInput} beats ${elements[computerInput]}`
+        return 1;
     } else if(userValue === computerValue) {
-        return `It's a tie ! ${userInput} against ${elements[computerInput]}`
+        return 0;
     } else {
-        return `You lose ! ${elements[computerInput]} beats ${userInput}`
+        return -1;
+    }
+}
+
+function getWinMessage(pWinValue){
+    switch(pWinValue){
+        case 1:
+            return `You win !`
+            break;
+        case 0:
+            return `It's a tie !`
+            break;
+        case -1:
+            return `You lose !`
+            break;
+        default:
+            return "There is a problem"
+            console.error("Incorrect win value");
+            break;
     }
 }
 
 // Create a function that takes care of the messages
 // Create a playGame() function
-function playGame(pNbRounds){
+function playGame(pNbRounds = 5){
     // Gather inputs
+    let userInput = prompt("Rock, paper or scissors?");
+    let computerInput = elements[getRandomValue()];
     // Play round
+    let winValue = playRound(userInput, computerInput);
     // Verify who wins (playRound returns a number: 1 win, 0 tie, -1 lose)
     // Display message
+    console.log(getWinMessage(winValue));
 }
 
 // testing program
-console.log(playRound());
+playGame(1);
