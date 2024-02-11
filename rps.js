@@ -85,9 +85,10 @@ function playGame(pNbRounds = 5){
         scores = calculateScores(scores, winValue);
 
         // Display message
-        console.log(`Round: ${round}`);
+        console.group(`Round: ${round}`);
         console.log(getWinMessage(winValue, userInput, computerInput));
         console.log(`You: ${scores[0]}, Computer: ${scores[1]}`);
+        console.groupEnd(`Round: ${round}`);
         console.log("\n");
     }
 
